@@ -30,13 +30,18 @@ describe Board do
                 expect(board[5][0]).to eql("[blue]")
             end
 
-            it "returns an error message if a spot isn't available" do 
+            it "returns an error message until a correct spot is place" do 
                 player = double("player")
                 display = double("display", :error => "Not a valid position enter a number between 0-7")
+                player_two = double("player")
                 allow(player).to receive(:chip) { "blue" }
                 allow(player).to receive(:position) { 99 } 
+                allow(player_two).to receive(:chip) { "blue" }
+                allow(player_two).to receive(:position) { 0 } 
                 subject.update_board(player.position,player.chip)
-                expect(:board).to receive(:error)
+                subject.update_board(player_two.position,player.chip)
+                expect(:board).to receive(:error).once
+                expect(board[6][0]).to eql("[blue]")
             end
         end
     end
