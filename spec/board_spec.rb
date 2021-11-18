@@ -5,7 +5,8 @@ describe Board do
         subject(:board) {described_class.new}
         context "creates a new board" do 
             it "creates a new board"do
-            expect(board.board.all?(Numberic)).to eql(true)
+            board_slots = board.board.flatten
+            expect(board_slots.all?("[]")).to eql(true)
         end
         end
 
@@ -39,9 +40,18 @@ describe Board do
                 allow(player_two).to receive(:chip) { "blue" }
                 allow(player_two).to receive(:position) { 0 } 
                 subject.update_board(player.position,player.chip)
-                subject.update_board(player_two.position,player.chip)
                 expect(:board).to receive(:error).once
+                subject.update_board(player_two.position,player.chip)
                 expect(board[6][0]).to eql("[blue]")
+            end
+
+            it "returns an error message if the column is full" do
+            player = double("player")
+                allow(player).to receive(:chip) { "blue" }
+                allow(player).to receive(:position) { 0 } 
+                subject.update_board(player.position,player.chip)
+                display = double("display", :error => "Not a valid position, column is full")
+                expect(:board).to receive(:error).once
             end
         end
     end
