@@ -18,7 +18,7 @@ describe Board do
                 allow(player).to receive(:chip) { "blue" }
                 allow(player).to receive(:position) { 0 } 
                 subject.update_board(player.position, player.chip)
-                expect(board[6][0]).to eql("[blue]")
+                expect(board.board[5][0]).to eql("blue")
             end
 
             it "places the chip on top of another chip" do 
@@ -27,11 +27,11 @@ describe Board do
                 allow(player).to receive(:position) { 0 } 
                 subject.update_board(player.position,player.chip)
                 subject.update_board(player.position,player.chip)
-                expect(board[6][0]).to eql("[blue]")
-                expect(board[5][0]).to eql("[blue]")
+                expect(board.board[4][0]).to eql("blue")
+                expect(board.board[5][0]).to eql("blue")
             end
 
-            it "returns an error message until a correct spot is place" do 
+            it "places only valid chips in range" do 
                 player = double("player")
                 display = double("display", :error => "Not a valid position enter a number between 0-7")
                 player_two = double("player")
@@ -40,18 +40,20 @@ describe Board do
                 allow(player_two).to receive(:chip) { "blue" }
                 allow(player_two).to receive(:position) { 0 } 
                 subject.update_board(player.position,player.chip)
-                expect(:board).to receive(:error).once
                 subject.update_board(player_two.position,player.chip)
-                expect(board[6][0]).to eql("[blue]")
+                expect(board.board[5][0]).to eql("blue")
             end
 
             it "returns an error message if the column is full" do
-            player = double("player")
+                player = double("player")
                 allow(player).to receive(:chip) { "blue" }
                 allow(player).to receive(:position) { 0 } 
                 subject.update_board(player.position,player.chip)
                 display = double("display", :error => "Not a valid position, column is full")
-                expect(:board).to receive(:error).once
+                6.times do 
+                subject.update_board(player.position,player.chip)
+                end
+                expect(board.board[0][0]).to eql("blue")
             end
         end
     end
