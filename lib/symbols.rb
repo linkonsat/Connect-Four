@@ -9,7 +9,8 @@ module Pieces
         return blue_chip
     end
 
-    def empty_slot
-        empty_slot = "\uFEFF\u26AA"
-        return empty_slot
+    def white_chip
+        white_chip = "\uFEFF\u26AA"
+        return white_chip
     end
+end

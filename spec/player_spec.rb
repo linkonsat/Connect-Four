@@ -7,7 +7,7 @@ describe Players do
         it "Assigns a new player name on valid input" do
         allow(player).to receive(:gets).and_return("Snazzy")
         player.new_player_name
-        expect(player.name).to eql("Snazzy")
+        expect(player.player_name).to eql("Snazzy")
     end
     end
 end
@@ -17,12 +17,12 @@ end
     it "Selects the appropriate symbol on valid input" do 
         allow(player).to receive(:gets).and_return("1")
         player.assign_chip
-        expect(player.chip).to eql("\uFEFF\u{1F535}")
+        expect(player.player_chip).to eql("\uFEFF\u{1F535}")
     end
     it "Doesn't assign the appropriate symbol until valid input occurs" do 
         allow(player).to receive(:gets).and_return("9", "1")
         player.assign_chip
-        expect(player.chip).to eql("\uFEFF\u{1F535}")
+        expect(player.player_chip).to eql("\uFEFF\u{1F535}")
     end
 end
 end
@@ -32,13 +32,13 @@ end
         it "returns a valid position" do 
             allow(player).to receive(:gets).and_return("5")
             player.new_position
-            expect(player.position).to eql(5)
+            expect(player.selected_chip_position).to eql(5)
         end
         it "Doesn't assign the position until the valid position is entered" do 
         allow(player).to receive(:gets).and_return("9", "5")
         player.new_position
         player.new_position
-        expect(player.position).to eql(5)
+        expect(player.selected_chip_position).to eql(5)
         end
     end
 end

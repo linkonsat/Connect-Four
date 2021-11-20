@@ -24,4 +24,12 @@ module GameMessages
         puts "Enter save at any point to save the current status of your game"
     end
 
+    def chip_select_options
+        "Enter 0 for the black chip, 1 for the blue chip, 2 for the white chip"
+    end
+
+    def position_options
+        "Enter 0-7 to drop a chip. Remember if a column is occupied fully\n
+        you can't drop any!"
+    end
 end
