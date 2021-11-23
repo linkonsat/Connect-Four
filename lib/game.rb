@@ -33,10 +33,21 @@ class Game
         end
     end
 
-    def replay?
+    def play
+        self.introduction
+        if (verify_new_game == "New")
+        self.clear
+        self.setup
+        self.round
+        elsif(verify_new_game == "Load")
+        else 
+            return
+        end
     end
 
     def clear
+        @board = Board.new
+        @player_list = nil
     end
 
     private
@@ -47,8 +58,13 @@ class Game
             self.chip_select_options
             new_player.assign_chip
 
-        return players
+        return new_player
     end
-        
+       
+    def verify_new_game
+        choice = gets.chomp
+        return choice 
+    end
+
 
 end

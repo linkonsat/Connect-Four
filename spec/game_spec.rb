@@ -46,18 +46,10 @@ end
     end
 end
 
-    describe "#replay?" do
-    subject(:game) { described_class.new }
-    it "Calls main game method to start new game" do 
-        game.replay
-        expect(subject).to receive(:clear_values)
-        expect(subject).to receive(:setup)
-    end
-end
-
     describe "#clear"  do 
     subject(:game) { described_class.new }
     it "Sets the game values back to nil" do 
+        allow(game).to receive(:create_players).and_return("a", "b")
         game.setup
         game.clear
         expect(game.player_list).to eql(nil)
@@ -71,6 +63,7 @@ end
         player_one = double("Player", :player_chip => "a", :new_position => 0, :selected_chip_position => 0)
         player_two = double("Player", :player_chip => "b", :new_position => 0, :selected_chip_position => 0)
         allow(board).to receive(:update_board).and_return(board.board[5][0] = "a")
+        allow(game).to receive(:round).and_return(false,true)
         game.player_list = [player_one,player_two]
         game.board = board
         game.round

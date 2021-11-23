@@ -2,7 +2,7 @@ require_relative "./symbols"
 require_relative "./game_messages"
 require "pry-byebug"
 #gives the ability of the player to select a vertical column to place chips
-class Players
+class Player
     attr_accessor :player_chip, :player_name, :selected_chip_position
     include Pieces
     include GameMessages

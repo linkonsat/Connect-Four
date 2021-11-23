@@ -25,15 +25,18 @@ module GameMessages
     end
 
     def chip_select_options
-        "Enter 0 for the black chip, 1 for the blue chip, 2 for the white chip"
+       puts  "Enter 0 for the black chip, 1 for the blue chip, 2 for the white chip"
     end
 
     def position_options
-        "Enter 0-7 to drop a chip. Remember if a column is occupied fully\n
+        puts "Enter 0-7 to drop a chip. Remember if a column is occupied fully\n
         you can't drop any!"
     end
 
     def enter_a_name
-        "Go ahead and put in a name! You can always Bob one out of the player if you wish"
+        puts "Go ahead and put in a name! You can always Bob one out of the player if you wish"
+    end
+    def introduction 
+        puts "Welcome to connect four! Enter New to start a new game, Load to enter previous or anything else to exit :)s"
     end
 end

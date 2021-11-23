@@ -15,16 +15,17 @@ class Board
         #Board would know if a spot is occupied or is out of bounds.
         #we would go down until we find the most bottom occuped spot aka a loop
         #stop at the next column spot that isn't a [] or chip
-        until @board[horizontal + 1].nil? || @board[horizontal + 1][player_position] != "[]" 
+        until @board[horizontal + 1].nil? || @board[horizontal + 1][player_position.selected_chip_position] != "[]" 
             horizontal += 1
         end
-        if(verify_input(player_position))
-            change_board(horizontal,player_position,player_chip)
+        if(verify_input(player_position.selected_chip_position))
+            change_board(horizontal,player_position.selected_chip_position,player_position.player_chip)
         end
     end
 
     def change_board(horizontal,vertical,player_chip)
         @board[horizontal][vertical] = player_chip 
+        binding.pry
     end
     private
     def verify_input(player_position)
