@@ -28,7 +28,7 @@ end
     end
 
     it "Returns true on a diagonal win to the left" do 
-        board = double("Board", :board => [["[]","[]","[]","a"],["[]","[]","a"],["[]","a"],["[]"]])
+        board = double("Board", :board => [["[]","[]","[]","a"],["[]","[]","a"],["[]","a"],["a"]])
         player = double("Player", :chip => "a")
         result = end_game.diagonal_win?(board.board,player.chip)
         expect(result).to eql(true)
