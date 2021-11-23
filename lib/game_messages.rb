@@ -32,4 +32,8 @@ module GameMessages
         "Enter 0-7 to drop a chip. Remember if a column is occupied fully\n
         you can't drop any!"
     end
+
+    def enter_a_name
+        "Go ahead and put in a name! You can always Bob one out of the player if you wish"
+    end
 end
