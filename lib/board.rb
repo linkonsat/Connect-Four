@@ -10,13 +10,13 @@ class Board
     @board = Array.new(6) { Array.new(7, '[]') }
   end
 
-  def update_board(player_position, player_chip)
+  def update_board(player)
     horizontal = 0
-    until @board[horizontal + 1].nil? || @board[horizontal + 1][player_position.selected_chip_position] != '[]'
+    until @board[horizontal + 1].nil? || @board[horizontal + 1][player.selected_chip_position] != '[]'
       horizontal += 1
     end
-    if verify_input(player_position.selected_chip_position)
-      change_board(horizontal, player_position.selected_chip_position, player_chip)
+    if verify_input(player.selected_chip_position)
+      change_board(horizontal, player.selected_chip_position, player.player_chip)
     end
   end
 

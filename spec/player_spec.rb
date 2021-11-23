@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require_relative '../lib/player'
+require "pry-byebug"
 # so this test covers 3 things 1.picking a name 2. picking a symbol 3. selecting a position
-describe Players do
+describe Player do
   describe '#new_player_name' do
     subject(:player) { described_class.new }
     context 'Assigns a to the player object' do
@@ -12,7 +13,7 @@ describe Players do
         expect(player.player_name).to eql('Snazzy')
       end
     end
-  end
+  end 
   describe '#assign_chip' do
     subject(:player) { described_class.new }
     context 'Assigns the appropriate player input' do
