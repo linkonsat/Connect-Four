@@ -32,6 +32,18 @@ class Game
         board.update_board(@player_list[current_player],@player_list[current_player].selected_chip_position)
         self.display_board(@board.board)
         end
+        play_again(@player_list[current_player])
+    end
+
+    def play_again(player)
+        winning_conditions = EndGame.new
+        if(winning_conditions.tie?(@board.board))
+        self.tie 
+        play
+        else
+            self.you_win(player.player_name)
+            play
+        end
     end
 
     def play

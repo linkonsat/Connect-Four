@@ -26,6 +26,7 @@ class Board
     def change_board(horizontal,vertical,player_chip)
         @board[horizontal][vertical] = player_chip 
     end
+    
     private
     def verify_input(player_position)
         if((0..7).include?(player_position) && board[0][player_position] == "[]")
