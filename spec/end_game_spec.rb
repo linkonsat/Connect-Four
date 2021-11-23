@@ -27,7 +27,12 @@ end
         expect(result).to eql(true)
     end
 
-
+    it "Returns true on a diagonal win to the left" do 
+        board = double("Board", :board => [["[]","[]","[]","a"],["[]","[]","a"],["[]","a"],["[]"]])
+        player = double("Player", :chip => "a")
+        result = end_game.diagonal_win?(board.board,player.chip)
+        expect(result).to eql(true)
+    end
 end
     describe "#tie" do 
     subject(:end_game) { described_class.new }
