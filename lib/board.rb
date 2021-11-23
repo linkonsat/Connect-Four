@@ -25,7 +25,6 @@ class Board
 
     def change_board(horizontal,vertical,player_chip)
         @board[horizontal][vertical] = player_chip 
-        binding.pry
     end
     private
     def verify_input(player_position)

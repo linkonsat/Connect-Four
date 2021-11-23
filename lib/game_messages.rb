@@ -39,4 +39,13 @@ module GameMessages
     def introduction 
         puts "Welcome to connect four! Enter New to start a new game, Load to enter previous or anything else to exit :)s"
     end
+
+    def display_board(board)
+        puts "#{board[0]}\n
+            #{board[1]}\n
+            #{board[2]}\n
+            #{board[3]}\n
+            #{board[4]}\n
+            #{board[5]}\n"
+    end
 end

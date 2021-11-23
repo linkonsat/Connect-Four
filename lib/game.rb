@@ -30,6 +30,7 @@ class Game
         current_player = player_turn 
         new_position = select_position(@player_list[current_player])
         board.update_board(@player_list[current_player],@player_list[current_player].selected_chip_position)
+        self.display_board(@board.board)
         end
     end
 

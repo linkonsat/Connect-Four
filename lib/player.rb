@@ -31,6 +31,7 @@ class Player
     end
 
     def new_position  
+        self.position_options
         until verify_position(input = gets.chomp)
 
         end
@@ -40,14 +41,12 @@ class Player
     private 
 
     def verify_position(input)
-        self.position_options
         if(("0".."7").include?(input))
             return true
         end
     end
 
     def verify_chip(input)
-        self.chip_select_options
         if(("0".."2").include?(input))
             return true
         end
